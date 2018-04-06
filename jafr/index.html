@@ -9,6 +9,10 @@ body {
 </style>
 <body>
 
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
 
 <a href="http://telegram.me/Mojtabaaaaaaaaaaaaaaaaaaaaa">contact me on Telegram</a>
 	<h1> جفر - تکسیر</h1>
@@ -27,7 +31,7 @@ body {
   </div>
 </form>
 
-<input type="text" id="input_1"  value=" ۱یا علی" dir="rtl" align="right" style="width:100%; border:10px solid red; font-size:50px"/>
+<input type="text" id="input_1"  value=" ۱2یا علی" dir="rtl" align="right" style="width:100%; border:10px solid red; font-size:50px"/>
 
 <input type="text" id="rowss" value="0" dir="ltl"  style="width:10%; border:10px solid yellow; font-size:50px"/>
 
@@ -38,7 +42,7 @@ body {
 
 
 <script type="text/javascript"> 
-document.getElementById("input_1").addEventListener('change paste keydown keyup input', run);
+$("input_1").addEventListener('change paste keydown keyup input', run);
 document.getElementById("method").addEventListener('change', run);
 var abj = [];
 var abjN =[];
