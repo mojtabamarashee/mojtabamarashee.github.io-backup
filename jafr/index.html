@@ -42,7 +42,10 @@ body {
 
 
 <script type="text/javascript"> 
-$("input_1").on('change paste keydown', run);
+	
+ $(document).ready(
+$("input_1").on('change paste keydown keypress input', run);
+	 )
 document.getElementById("method").addEventListener('change', run);
 var abj = [];
 var abjN =[];
