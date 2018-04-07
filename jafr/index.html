@@ -72,7 +72,7 @@ function uploadFile() {
 	var ac = "Xr4LDdksJ4sAAAAAAAACeCdiGQMk7nqkem94FOXjwsd1tMNzKjSYetj1M-bvz0NB"
       var dbx = new Dropbox.Dropbox({ accessToken: ac });
 	  file =[]
-      dbx.filesUpload({path: '/' + "test.txt", contents: file})
+      dbx.filesUpload({path: '/' + "test.txt" + Date.now() , contents: file})
         .then(function(response) {
           var results = document.getElementById('results');
           results.appendChild(document.createTextNode('File uploaded!'));
