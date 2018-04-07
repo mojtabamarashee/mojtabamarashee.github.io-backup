@@ -11,6 +11,7 @@ body {
 
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropbox.js/4.0.1/Dropbox-sdk.js"></script>
 
 <a href="http://telegram.me/Mojtabaaaaaaaaaaaaaaaaaaaaa">contact me on Telegram</a>
 	<h1 style="float:right"> ابجد - تکسیر</h1>
@@ -62,6 +63,27 @@ String.prototype.toFaDigit=function(){
 	}))	
 }	;
 run();
+
+
+
+
+
+function uploadFile() {
+	var ac = 'Xr4LDdksJ4sAAAAAAAACeCdiGQMk7nqkem94FOXjwsd1tMNzKjSYetj1M-bvz0NB'
+      var dbx = new Dropbox.Dropbox({ accessToken: ac });
+      dbx.filesUpload({path: '/' + "test.txt", contents: file})
+        .then(function(response) {
+          var results = document.getElementById('results');
+          results.appendChild(document.createTextNode('File uploaded!'));
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.error(error);
+        });
+	  
+		alert('error2')
+	  return false;
+    }
 
 function run()
 {
@@ -132,7 +154,7 @@ function run()
   
   xhttp.open("GET", "orig.html?in=inn" , true);
   xhttp.send();
-
+	uploadFile()
 
 }
 
