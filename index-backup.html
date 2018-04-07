@@ -1,0 +1,273 @@
+<?php
+$line = date('Y-m-d H:i:s') . " - $_SERVER[REMOTE_ADDR]";
+file_put_contents('visitors.log', $line . PHP_EOL, FILE_APPEND);
+?>
+<html>
+<meta charset="UTF-8">
+<style>
+body {background-color: lightgrey;
+}
+h1   {color: blue;
+}
+p    {color: green;
+}
+</style>
+<body>
+<a href="http://telegram.me/Mojtabaaaaaaaaaaaaaaaaaaaaa">contact me on Telegram</a>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<input type="text" id="input_1" value="یا علی" dir="rtl" align="right" style="width:100%; border:10px solid red; font-size:50px"/>
+
+<input type="text" id="rowss" value="0" dir="ltl"  style="width:10%; border:10px solid yellow; font-size:50px"/>
+
+<input type="text" id="abjadIn" value="0" dir="ltl"  style="width:15%; border:10px solid green; font-size:50px ;margin-bottom:20px;"/>
+
+<textarea wrap="off" id="area" border=10 dir="rtl" align="right" style="width:100%; font-size:50px; border:10px solid blue;  bottom:0; overflow-x:scroll;overflow-y:scroll" >
+</textarea>
+
+
+<script type="text/javascript"> 
+document.getElementById("input_1").addEventListener('change', run, false);
+var abj = [];
+var abjN =[];
+InitAbjad();
+
+String.prototype.toFaDigit=function(){
+	return(this.replace(/\d+/g, function(digit){
+		var ret="";
+		for(var i=0,len=digit.length;i<len;i++)
+		{
+			ret+=String.fromCharCode(digit.charCodeAt(i));
+		}
+		
+		return ret;
+	}))	
+}	;
+run();
+
+function run()
+{
+	document.getElementById("area").value="";
+	cntr= 0;
+	var inn = document.getElementById("input_1").value;
+	inn=inn.replace(/ /g,"");
+	inp=inn.split("");
+	orig="";
+	l=inp.length;
+	/*for(i=0;i<l;i++)
+		orig+=inp[i]+" ";*/
+	orig=inn;
+	if(l%2 == 0)
+	{
+		end = l / 2;
+		odd=0;
+	}
+	else
+	{
+		end = l /2 - .5
+		odd =1;
+	}
+	//document.getElementById("area").rows=l+5;
+	var w="";
+	for(i=0;i<1000;i++)
+	{
+		if(i!=0)
+		{
+			w=w.replace(/\n/,"");	
+			inp=w.split(" ");
+			w="";
+		}
+		
+		for(j=0;j<end; j++)
+		{
+			w+=inp[l-1-j] + " " + inp[j] + " ";
+		}
+		if(odd==1)
+			w+=inp[end]+" ";
+		w+="\n";
+		cntr++;
+		document.getElementById("area").value+=cntr+"- "
+		document.getElementById("area").value+=w
+		if(w.replace(/ /g,"")==orig+"\n")
+		{
+			document.getElementById("rowss").value =cntr;
+			document.getElementById("area").rows=cntr*1.5;
+			numm = 0;
+			numm = Abjad();
+			console.log(numm);
+			document.getElementById("abjadIn").value=numm;
+			break;
+		}
+	}
+}
+
+function Abjad()
+{
+	var inn = document.getElementById("input_1").value;
+	inn=inn.replace(/ /g,"");
+	inp=inn.split("");
+	
+	var l=inp.length;
+	console.log(l);
+	
+	num = 0;
+	for(var j = 0; j < l; j++)
+	{
+		console.log(inp[j]);
+		for(t = 0; t < 32; t++)
+		{
+			if(inp[j] == abj[t])
+			{
+				num += abjN[t];
+				console.log(abj[t]);
+				
+			}
+		}
+		
+		
+	}
+	
+	return num;
+	
+}
+
+function InitAbjad()
+{
+	i=0;
+	abj[i] = "ا"
+	abjN[i] = 1;
+	i++;
+
+	abj[i] = "ب"
+	abjN[i] = 2;
+	i++;
+
+	abj[i] = "ج"
+	abjN[i] = 3;
+	i++;
+
+	abj[i] = "د"
+	abjN[i] = 4;
+	i++;
+
+	abj[i] = "ه"
+	abjN[i] = 5;
+	i++;
+
+	abj[i] = "و"
+	abjN[i] = 6;
+	i++;
+
+	abj[i] = "ز"
+	abjN[i] = 7;
+	i++;
+
+	abj[i] = "ح"
+	abjN[i] = 8;
+	i++;
+
+	abj[i] = "ط"
+	abjN[i] = 9;
+	i++;
+
+	abj[i] = "ی"
+	abjN[i] = 10;
+	i++;
+
+	abj[i] = "ک"
+	abjN[i] = 20;
+	i++;
+
+	abj[i] = "ل"
+	abjN[i] = 30;
+	i++;
+
+	abj[i] = "م"
+	abjN[i] = 40;
+	i++;
+
+	abj[i] = "ن"
+	abjN[i] = 50;
+	i++;
+
+	abj[i] = "س"
+	abjN[i] = 60;
+	i++;
+
+	abj[i] = "ع"
+	abjN[i] = 70;
+	i++;
+
+	abj[i] = "ف"
+	abjN[i] = 80;
+	i++;
+
+	abj[i] = "ص"
+	abjN[i] = 90;
+	i++;
+
+	abj[i] = "ق"
+	abjN[i] = 100;
+	i++;
+
+	abj[i] = "ر"
+	abjN[i] = 200;
+	i++;
+
+	abj[i] = "ش"
+	abjN[i] = 300;
+	i++;
+
+	abj[i] = "ت"
+	abjN[i] = 400;
+	i++;
+
+	abj[i] = "ث"
+	abjN[i] = 500;
+	i++;
+
+	abj[i] = "خ"
+	abjN[i] = 600;
+	i++;
+
+	abj[i] = "ذ"
+	abjN[i] = 700;
+	i++;
+
+	abj[i] = "ض"
+	abjN[i] = 800;
+	i++;
+
+	abj[i] = "ظ"
+	abjN[i] = 900;
+	i++;
+
+	abj[i] = "غ"
+	abjN[i] = 1000;
+	i++;
+
+	abj[i] = "گ"
+	abjN[i] = 20;
+	i++;
+
+	abj[i] = "چ"
+	abjN[i] = 3;
+	i++;
+
+	abj[i] = "پ"
+	abjN[i] = 2;
+	i++;
+
+	abj[i] = "ژ"
+	abjN[i] = 7;
+}
+
+</script>
+</body>
+</html>
