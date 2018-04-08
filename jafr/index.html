@@ -87,7 +87,6 @@ function uploadFile(ip, input) {
 	 file = input;
 	 dbx.filesUpload({path: '/' + ip , contents: file})
 	 .then(function(response) {
-			 alert(response);
 		})
 	 .catch(function(error) {
 			 console.error(error);
