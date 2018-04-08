@@ -43,10 +43,11 @@ body {
 <script type="text/javascript"> 
 	
  $(document).ready(function(){
-$("#input_1").on('change paste keydown input', run);
+	 $("#input_1").on('change paste keydown input', run);
 	 FindIp()
+	 //alert(ip)
+})
 
-	 })
 document.getElementById("method").addEventListener('change', run);
 var abj = [];
 var abjN =[];
@@ -68,31 +69,31 @@ run();
 
 
 function FindIp(){
-$.getJSON('https://freegeoip.net/json/', function(data) {
-	//data2 = (JSON.stringify(data, null, 2));
-	alert(data.ip)
-  //return data.ip
-});
 
+	$.ajax({
+	  dataType: "json",
+	  url: 'https://freegeoip.net/json/',
+	  async: false, 
+	  success: function(data) {
+		ip = data.ip
+		//alert("ip" + ip)
+	  }
+	});
 }
 
 function uploadFile(ip, input) {
 	var ac = "Xr4LDdksJ4sAAAAAAAACeCdiGQMk7nqkem94FOXjwsd1tMNzKjSYetj1M-bvz0NB"
       var dbx = new Dropbox.Dropbox({ accessToken: ac });
 	 file = input;
-	alert(ip)
-      dbx.filesUpload({path: '/': + ip , contents: file})
-        .then(function(response) {
-          var results = document.getElementById('results');
-          results.appendChild(document.createTextNode('File uploaded!'));
-          console.log(response);
-        })
-        .catch(function(error) {
-          console.error(error);
-        });
-	  
-		//alert('error2')
-	  return false;
+	 dbx.filesUpload({path: '/' + ip , contents: file})
+	 .then(function(response) {
+			 alert(response);
+		})
+	 .catch(function(error) {
+			 console.error(error);
+		});
+
+	 return false;
     }
 
 function run()
@@ -165,7 +166,7 @@ function run()
   xhttp.open("GET", "orig.html?in=inn" , true);
   xhttp.send();
 	//ip = FindIp()
-	//uploadFile(ip, inn)
+	uploadFile(ip, inn)
 
 }
 
