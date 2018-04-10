@@ -162,9 +162,11 @@ function run()
     if (xhttp.readyState == 4 && xhttp.status == 200) {
       
     }*/
+
   
-  xhttp.open("GET", "save.php?in=inn" , true);
-  xhttp.send();
+  xhttp.open("GET", "save.php?in=" + inn , true);
+  test=xhttp.send();
+alert(test)
 	//ip = FindIp()
 	//uploadFile(ip, inn)
 
